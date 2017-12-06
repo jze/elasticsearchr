@@ -363,7 +363,7 @@ scroll_search <- function(rescource, api_call_payload, extract_function = extrac
   n <- 2
   while (has_next) {
     message("...", appendLF = FALSE)
-    next_api_payload <- paste0('{"scroll": "1m", "scroll_id": "', next_scroll_id, '"}')
+    next_api_payload <- next_scroll_id
     next_response <- httr::POST(scroll_search_url, body = next_api_payload)
     check_http_code_throw_error(next_response)
     if(length(httr::content(next_response)$hits$hits) > 0) {
